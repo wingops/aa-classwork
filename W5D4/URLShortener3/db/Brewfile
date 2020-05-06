@@ -1,0 +1,20 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+brew "git"
+brew "mas"
+brew "rbenv"
+mas "Cisco eReader", id: 1088900981
+mas "com.arkluz.inftree", id: 1383675158
+mas "Datum - Lite", id: 901631046
+mas "Download Shuttle", id: 847809913
+mas "FTAnalyzer", id: 1443142991
+mas "Kindle", id: 405399194
+mas "MacFamilyTree 9", id: 1458866808
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Paint S", id: 736473980
+mas "Slack", id: 803453959
+mas "SQLiteFlow", id: 1378587993
+mas "WhatsApp", id: 1147396723
+mas "Wunderlist", id: 410628904
+mas "Xcode", id: 497799835
