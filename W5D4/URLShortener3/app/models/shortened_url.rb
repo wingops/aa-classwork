@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: shortened_urls
+#
+#  id           :bigint           not null, primary key
+#  short_url    :string
+#  long_url     :string
+#  submitter_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class ShortenedUrl < ApplicationRecord
     validates :short_url, uniqueness: true
     validates :submitter_id, :long_url, presence: true
@@ -30,25 +42,25 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def num_clicks
-        # data = Visit.all
-        # count = 0
-        # data.each do |datum|
-        #     count += 1 if self.id == datum.visited_short_url
-        # end
-        # count
-        data = 
-        SELECT
+        visits.count
 
+        # data = visits.where('visited_short_url = ?', self.id)
+        # p data.count
     end
 
     def num_uniques
-        data = Visit.all
-        visit_count = Hash.new {|h,k| h[k] = 0}
-        data.each {|datum| visit_count[datum.visiting_user_id] += 1 if datum.visited_short_url == self.id}
-        visit_count.keys.length
+
+        visits.select(:visiting_user_id).distinct.count
+
+
+        # data = Visit.all
+        # visit_count = Hash.new {|h,k| h[k] = 0}
+        # data.each {|datum| visit_count[datum.visiting_user_id] += 1 if datum.visited_short_url == self.id}
+        # visit_count.keys.length
     end
 
     def num_recent_uniques
+        visits.select(:visiting_user_id).where('created_at > ?',3.hours.ago).distinct.count
     end
 
 end

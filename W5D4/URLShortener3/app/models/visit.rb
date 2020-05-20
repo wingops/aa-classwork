@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: visits
+#
+#  id                :bigint           not null, primary key
+#  visiting_user_id  :integer
+#  visited_short_url :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 class Visit < ApplicationRecord
 
     validates :visiting_user_id, :visited_short_url, presence: true
